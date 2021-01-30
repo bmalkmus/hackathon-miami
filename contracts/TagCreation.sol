@@ -1,7 +1,7 @@
 pragma solidity ^0.7.3;
 
 contract TagsDirectory {
-    uint public tagsCollectionsCount = 0;
+    
 
     struct Tag {
         uint id;
@@ -11,29 +11,34 @@ contract TagsDirectory {
     struct TagCollection {
         string name;
         uint id;
-        Tag[] tags;
         uint tagCount;
     }
 
+    event OnCollectionCreation(string name, uint id);
+
+    TagCollection[] public TagCollections;
+
     constructor() public {
-        AddCollection("Sample Collection");
+        CreateCollection("Sample Collection");
     }
 
 
 
     mapping (uint => TagCollection) public Directory;
-    mapping (uint => Tag) public TagNumber;
+    mapping (string => Tag[]) public TagsListing;
+    // mapping (uint => Tag) public TagNumber;
 
     function getCollectionCount() public view returns (uint){
-        return tagsCollectionsCount;
+        return TagCollections.length;
     }
 
-    function AddCollection (string memory _name) public {
-        tagsCollectionsCount++;
-        Directory[tagsCollectionsCount] = TagCollection(_name, tagsCollectionsCount, storage Tags[], 1);
-        TagCollection memory collection = Directory[tagsCollectionsCount];
-        uint count = collection.tags.length;
-        collection.tags.push(Tag(count++, msg.sender));
-        Directory[tagsCollectionsCount] = collection;
+    function CreateCollection (string memory _name) public {
+        uint _tagCollectionsID = TagCollections.length + 1;
+        TagCollection memory collection = TagCollection(_name, _tagCollectionsID, 1);
+        TagCollections.push(collection);
+        Tag memory _tag = Tag( 1, msg.sender );
+        string memory _unique = _name;
+        TagsListing[_unique].push(_tag);
+        emit OnCollectionCreation(_name, _tagCollectionsID);
     }
 }
