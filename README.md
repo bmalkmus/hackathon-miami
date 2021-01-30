@@ -1,7 +1,13 @@
 # hackathon-miami
 Miami Jan 2021 Hackathon
 ## User Story
-    I used to spend a lot of spare time playing Disc Golf and Regular Golf. Within the community there type of competition called "playing for tags". A Tag is a marker with a number designation usually kept on the golfer when they are playing a round. The tag is a member of a set of tags ranging from 10 - 50 tags. They are each numbered respectively with 1 being the coveted tag. A golfer can only have one tag number of a set. When two or more golfers are "playing for tags", who ever wins the round, gets the lowest number tag. This type of competition gives golfer an achievement style game as they can collect multiple sets, playing for the lowest possible tag number of that set. Sometimes it can become an issue of getting that lowest number tag as possible because of human error. Golfers either lose their own tag or don't know which golfer has which certain tag. That is where Blockchain technology comes in to save the day! Golfers are able to see who has which tag number in a set and are also able to keep a digital copy of their own tag for Trades. Tags can not be stolen from other members. 
+
+I used to spend a lot of spare time playing Disc Golf and Regular Golf. Within the community there type of competition called playing for tags. A Tag is a marker with a number designation usually kept on the golfer when they are playing a round. The tag is a member of a set of tags ranging from 10 to 50 tags. They are each numbered respectively with 1 being the coveted tag. A golfer can only have one tag number of a set.
+
+When two or more golfers are playing for tags, who ever wins the round, gets the lowest number tag. This type of competition gives golfer an achievement style game as they can collect multiple sets, playing for the lowest possible tag number of that set.
+
+Sometimes it can become an issue of getting that lowest number tag as possible because of human error. Golfers either lose their own tag or don't know which golfer has which certain tag. That is where Blockchain technology comes in to save the day! Golfers are able to see who has which tag number in a set and are also able to keep a digital copy of their own tag for Trades. Tags can not be stolen from other members.
+
 ## Progress
 
    ### Done
@@ -17,3 +23,5 @@ Miami Jan 2021 Hackathon
 ## Future
  - I spent a lot of consideration for making this project in React Native as I think it would benefit the user greatly if there were able to transfer their tags immediately after their round. 
  - A physical tag is fun to have because of the artwork that is implied with the tag. I want to set up for the user to add a type of artwork for their tag image. So the tags on the collection page will be displayed in a card with the artwork as the background. 
+## Visual Progress
+ ![Screenshot](screenshots/Progress.png)<br>
