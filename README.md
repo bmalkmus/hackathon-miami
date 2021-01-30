@@ -13,7 +13,7 @@ Sometimes it can become an issue of getting that lowest number tag as possible b
    ### Done
    I got all the contracts created in my project. There are two. One is for the users so that they can enter a username for the website so it is easier to display tag ownership information within the community. The other contract is for the Tag Directory that lets you create a new collection of tags which automaticallys gives tag number 1 to the creator. It always for other users to add a tag onto that collection to begin your "playing for tags". All Transfers must be approved by both parties for the trade. While is set-up for both parties to be able to initiate the transfer, it should be on the person who is receiving the lower tag if not already owned. 
 
-   ### 
+   ### Need to Do
    - I ran out of time for the Front End of this project.
    -  In my head, I was imagining a home page with the list of the tag collection names in a navigation bar to the left. 
    - In the right main view, button options to Create a new Collection of Tags, quick approval and transfer buttons, and documentation about what a tag is and how to play. 
