@@ -10,8 +10,8 @@ describe("TagsDirectory", function(){
     it("Should have a collection count of 1", async function() {
         expect (await tagsDirectory.getCollectionCount()).to.equal(1);
     })
-    it("Should have a tag array of length 1", async function() {
-        expect (await tagsDirectory.getCollectionTagArrayLength("Sample Collection")).to.equal(1);
+    it("Should have a tag array of length 5", async function() {
+        expect (await tagsDirectory.getCollectionTagArrayLength("Sample Collection")).to.equal(5);
     })
     it("Should have return an owner address of creator", async function() {
         const tagInfo = await tagsDirectory.getCollectionTagInfo("Sample Collection", 1);
@@ -21,7 +21,7 @@ describe("TagsDirectory", function(){
     it("Should have a tag length of two", async function (){
         const [a, AltOwner] = await hre.ethers.getSigners();
         await tagsDirectory.AddTag("Sample Collection", AltOwner.address);
-        expect (await tagsDirectory.getCollectionTagArrayLength("Sample Collection")).to.equal(2);
+        expect (await tagsDirectory.getCollectionTagArrayLength("Sample Collection")).to.equal(6);
     });
 })
 
