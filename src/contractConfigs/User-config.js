@@ -1,4 +1,4 @@
-export const USERS_ADDRESS = '0x5FbDB2315678afecb367f032d93F642f64180aa3'
+export const USERS_ADDRESS = '0x5fc8d32690cc91d4c39d9d3abcbd16989f875707'
 export const USERS_ABI = [
   {
     "inputs": [],
@@ -87,6 +87,30 @@ export const USERS_ABI = [
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "userInfo",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "username",
+        "type": "string"
       }
     ],
     "stateMutability": "view",

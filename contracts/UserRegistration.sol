@@ -13,6 +13,7 @@ contract Users {
     event AddedUser(address account, string username);
 
     mapping (address => User) public Registry;
+    mapping (uint => User) public userInfo;
 
     constructor() {
         AddUser(0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266, "Alice");
@@ -31,6 +32,7 @@ contract Users {
         userCount++;
         address  account = _account;
         Registry[account] = User(_account, _username);
+        userInfo[userCount] = Registry[account];
         emit AddedUser(_account, _username);
     }
 

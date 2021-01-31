@@ -37,6 +37,7 @@ contract TagsDirectory {
     mapping (uint => TagCollection) public Directory;
     mapping (string => Tag[]) public TagsListing;
     mapping (address => Tag[]) public TagsByOwner;
+    mapping (string => TagCollection) public CollectionInfo;
     // mapping (uint => Tag) public TagNumber;
 
     function getCollectionCount() public view returns (uint){
@@ -56,6 +57,7 @@ contract TagsDirectory {
         uint _tagCollectionsID = TagCollections.length + 1;
         TagCollection memory collection = TagCollection(_name, _tagCollectionsID, 1);
         TagCollections.push(collection);
+        Directory[_tagCollectionsID]=collection;
         Tag memory _tag = Tag( 1, msg.sender, msg.sender, _name);
         string memory _unique = _name;
         TagsListing[_unique].push(_tag);
@@ -66,6 +68,9 @@ contract TagsDirectory {
     function AddTag (string memory _name, address _account) public {
         uint _id = TagsListing[_name].length+1;
         TagsListing[_name].push(Tag(_id, _account, _account, _name));
+        TagCollection memory _temp = CollectionInfo[_name];
+        _temp.tagCount++;
+        CollectionInfo[_name]=_temp;
         emit OnTagAddition(_name, _id, _account);
     }
 
