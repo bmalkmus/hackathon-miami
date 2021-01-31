@@ -20,8 +20,16 @@ Sometimes it can become an issue of getting that lowest number tag as possible b
    - When a user clicks on a tag name on the left, they are directed to a view with all the current tags in the collection and the current owner of each tag. 
    - There will be a Button at the top to add a new tag to the collection to start playing.
    - There will also be a transfer button on the page for quick navigation
+   ### Update to extended Deadline
+   - Updated the UI to be a single-page-application. I still want to work to make this a Mobile application.
+   - The tag images are rotated from random website URLS. I will update the contract in future for user to upload their own image choice.
+   - The demo video cut off at 5 mins, the end statement was that when a user creates a new tag collection, they are automatically the owner of tag #1
 ## Future
  - I spent a lot of consideration for making this project in React Native as I think it would benefit the user greatly if there were able to transfer their tags immediately after their round. 
  - A physical tag is fun to have because of the artwork that is implied with the tag. I want to set up for the user to add a type of artwork for their tag image. So the tags on the collection page will be displayed in a card with the artwork as the background. 
 ## Visual Progress
- ![Screenshot](screenshots/Progress.png)<br>
+ ![Screenshot](screenshots/Progress.png)<br><br>
+ ![Scrrenshot](screenshots/mainScreen.png)<br><br>
+ ![Scrrenshot](screenshots/Collection.png)<br><br>
+ ![Scrrenshot](screenshots/SetOwner.png)<br><br>
+ 
