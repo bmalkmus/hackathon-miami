@@ -1,18 +1,47 @@
 import React from 'react';
-import {Grid, Typography, Button, FormControl, InputLabel, Select, MenuItem, makeStyles } from "@material-ui/core";
+import {Grid, Typography, Button, FormControl, InputLabel, Select, MenuItem, makeStyles, ButtonGroup } from "@material-ui/core";
 import Tag from "./Card"
 
 const useStyles = makeStyles((theme) => ({
+    root: {
+        backgroundColor: "darkgrey",
+        borderRadius: "15px",
+        padding: "25px",
+        color: "white",
+        margin: "10px"
+        
+    },
+    title: {
+        textShadow: "3px 4px 4px black"
+    },
     formControl: {
       margin: theme.spacing(1),
-      minWidth: 120,
+      minWidth: 300,
     },
     selectEmpty: {
       marginTop: theme.spacing(2),
     },
+    buttonGroup: {
+        alignSelf: "center",
+        color: "white",
+        backgroundColor: "#259cac"
+    },
+    card: {
+        margin: "60"
+    }
   }));
 
+  const images = [
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMqn6SqO8ka2FhuGGu0JnSRPmiwIePbRCcvQ&usqp=CAU",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXrAl7Q2y4gWLhMPLbsNuNE8esTaXOzB6d_Q&usqp=CAU",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRmdqchKcU3yhwD75BSvv2cPELKemmBEi1vw&usqp=CAU",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF_9C2tOyeNnzCdlc1W4DC0bemev-7VY7Rkg&usqp=CAU",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEAvlVCzGKcS149robv9cY49kzRMoJqyIu7w&usqp=CAU"
+]
+
 const TagSet = ({name, tagContract, users, account}) => {
+
+    const random = Math.floor(Math.random()*5)
 
     const addBTN = React.useRef();
     const [tags, setTags] = React.useState([])
@@ -79,12 +108,15 @@ const TagSet = ({name, tagContract, users, account}) => {
     }
 
     return (
-        <Grid container item xs={10}>
+        <Grid container item xs={10} className={classes.root}>
             <Grid container item xs={12} alignContent="center" justify="center" direction="column">
-                <Typography variant ="h2" textAlign="center">
+                <Typography variant ="h2" textAlign="center" className={classes.title}>
                     {name}
                 </Typography>
-                <Grid>
+                <Grid container item xs={12} alignContent="center" justify="center" direction="column">
+                <Button variant="outlined" onClick ={addTag} ref={addBTN}>Create Tag for {name}</Button>
+
+                    <Grid>
                     <FormControl className={classes.formControl}>
                             <InputLabel >Golfer to Transfer</InputLabel>
                             <Select
@@ -134,17 +166,22 @@ const TagSet = ({name, tagContract, users, account}) => {
                                     )
                                 })}
                             </Select>
-                        </FormControl>
-                    <Button variant="outlined" onClick ={approveTag} >Approve Golfer for Transfer</Button>
-                    <Button variant="outlined" onClick ={TransferTag} > Transfer Tag</Button>
-                    <Button variant="outlined" onClick ={addTag} ref={addBTN}>Create Tag for {name}</Button>
+                        </FormControl>                    
+                    </Grid>
+                    <ButtonGroup className={classes.buttonGroup} size="large">
+                        <Button variant="outlined" onClick ={approveTag} >Approve Golfer for Transfer</Button>
+                        <Button variant="outlined" onClick ={TransferTag} > Transfer Tag</Button>
+                    </ButtonGroup>
+                   
                 </Grid>
             </Grid>
+            <Grid direction={'row'} container item xs={12} alignContent="center" justify="center">
             {tags.map(tag=>{
                 return (
-                    <Tag key={tag.id} tag={tag} users={users}/>
+                    <Tag className={classes.card} key={tag.id} tag={tag} users={users} url={images[random]}/>
                 )
             })}
+            </Grid>
         </Grid>
     )
 }

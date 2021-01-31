@@ -44,6 +44,8 @@ function App() {
     }
     setCollect(tempColl);
     setLoad(true);
+    const UserAccount = await usersList.methods.Registry(accounts[0]).call();
+    console.log(UserAccount,"NEW USER ACCOUNT")
   }
 
   useEffect(()=>{

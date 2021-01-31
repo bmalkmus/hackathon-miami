@@ -11,10 +11,12 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
+    margin:"15px",
+    boxShadow: "5px 10px 10px black"
   },
 });
 
-export default function Tag({tag, users}) {
+export default function Tag({tag, users, url}) {
     const classes = useStyles();
     const [name, setName] = React.useState();
     const owner = tag[1]
@@ -33,10 +35,10 @@ export default function Tag({tag, users}) {
       <CardActionArea>
         <CardMedia
           component="img"
-          alt="Contemplative Reptile"
+          alt="Tag Image"
           height="140"
-          image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMqn6SqO8ka2FhuGGu0JnSRPmiwIePbRCcvQ&usqp=CAU"
-          title="Contemplative Reptile"
+          image={url}
+          title="Tag Image"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
