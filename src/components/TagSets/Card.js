@@ -14,8 +14,19 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ImgMediaCard() {
-  const classes = useStyles();
+export default function Tag({tag, users}) {
+    const classes = useStyles();
+    const [name, setName] = React.useState();
+    const owner = tag[1]
+
+    React.useEffect(()=>{
+        for (let i = 0; i < users.length; i++){
+            if(owner === users[i].account){
+                setName(users[i].username)
+                break;
+            }
+        }
+    }, [owner, users])
 
   return (
     <Card className={classes.root}>
@@ -24,27 +35,18 @@ export default function ImgMediaCard() {
           component="img"
           alt="Contemplative Reptile"
           height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
+          image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMqn6SqO8ka2FhuGGu0JnSRPmiwIePbRCcvQ&usqp=CAU"
           title="Contemplative Reptile"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Lizard
+            {tag[0]}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica
+            {name}
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
-      </CardActions>
     </Card>
   );
 }

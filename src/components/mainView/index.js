@@ -26,20 +26,37 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 
-function MainView({collection, collectionsCount, setNameBtn, addTag, tagContract, users}) {
+function MainView({collection, collectionsCount, setNameBtn, setUserNameBtn, addTag, tagContract, users, account}) {
     console.log("collection", collection, collectionsCount, )
     const classes = useStyles();
     const inputRef = React.useRef();
+    const userNameRef = React.useRef();
     const containerRef=React.useRef([]);
     const [inputField, changeInput]=React.useState("");
+    const [userNameField, changeName]=React.useState("");
     const [drop, changeDrop]=React.useState("Set Tag Name");
     const [unique, setUnique] = React.useState(true)
+    const [uniqueUser, setUniqueUser] = React.useState(true)
 
     React.useEffect(()=>{
         for (let i = 0; i < collection.length; i++){
 
             if (inputField === collection[i].name){
                 console.log("They are the same", inputField)
+                inputRef.current.style.color="red"
+                setUniqueUser(false);
+            }
+            else {
+                inputRef.current.style.color="inherit"
+                setUniqueUser(true);
+            }
+        }
+    }, [collection, inputField])
+
+    React.useEffect(()=>{
+        for (let i = 0; i < users.length; i++){
+
+            if (userNameField === users[i].username){
                 inputRef.current.style.color="red"
                 setUnique(false);
             }
@@ -48,7 +65,7 @@ function MainView({collection, collectionsCount, setNameBtn, addTag, tagContract
                 setUnique(true);
             }
         }
-    }, [collection, inputField])
+    }, [users, userNameField])
 
     const handleDropChange = (event) => {
         changeDrop(event.target.value)
@@ -66,6 +83,10 @@ function MainView({collection, collectionsCount, setNameBtn, addTag, tagContract
     const inputChange = () => {
         console.log(inputRef.current.value)
         changeInput(inputRef.current.value)
+    }
+    const userNameChange = () => {
+        console.log(userNameRef.current.value)
+        changeName(userNameRef.current.value)
     }
 
   
@@ -102,6 +123,12 @@ function MainView({collection, collectionsCount, setNameBtn, addTag, tagContract
                 </Grid>
               <Grid item xs={12}>
                 <form className={classes.root} noValidate autoComplete="off">
+                    <TextField id="outlined-basic" label="Set UserName" variant="outlined" inputRef ={userNameRef} onChange={userNameChange}/>
+                </form>
+                <Button size="large" variant="outlined" onClick={()=>{setUserNameBtn(userNameField, uniqueUser)}}>Register Username</Button>
+              </Grid>
+              <Grid item xs={12}>
+                <form className={classes.root} noValidate autoComplete="off">
                     <TextField id="outlined-basic" label="Set Name" variant="outlined" inputRef ={inputRef} onChange={inputChange}/>
                 </form>
                 <Button size="large" variant="outlined" onClick={()=>{setNameBtn(inputField, unique)}}>Add a new Tag Set</Button>
@@ -112,7 +139,7 @@ function MainView({collection, collectionsCount, setNameBtn, addTag, tagContract
                     //       <h2>{ele.name}</h2>
                     //   </div>
                     <div id={ele.name} key = {index} ref={el => containerRef.current[ele.name] = el}>
-                      <TagSet name = {ele.name} key = {index} addTag={addTag} tagContract={tagContract} users={users}/>
+                      <TagSet name = {ele.name} key = {index} addTag={addTag} tagContract={tagContract} users={users} account={account}/>
                     </div>
                   )
               })}

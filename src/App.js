@@ -40,7 +40,6 @@ function App() {
     let tempColl = []
     for (let i = 1; i <= collectCount; i++){
       const coll = await CollectionsList.methods.Directory(i).call();
-      console.log(coll, "collection Results")
        await tempColl.push(coll); 
     }
     setCollect(tempColl);
@@ -66,14 +65,24 @@ function App() {
     }
   }
 
-  const addTag = () => {
-
+  const setUserNameBtn = (input, unique) => {
+    if (!unique){
+      alert("Sorry but this UserName has already been taken")
+    }
+    else {
+      userContracts.methods.AddUser(account, input).send({from:account})
+      .once('receipt', (receipt) => {
+        console.log("user added")
+        window.location.reload()
+      })
+    }
   }
+
 
   return (
     <div className="App">
       {loaded 
-      ? <MainView tagContract={collectionContract} addTag={addTag} users={users} collection={collect} collectionsCount={collectionsCount} setNameBtn={setNameBtn}/>
+      ? <MainView account ={account} setUserNameBtn={setUserNameBtn} tagContract={collectionContract} users={users} collection={collect} collectionsCount={collectionsCount} setNameBtn={setNameBtn}/>
       : <div> Loading....</div>}
     </div>
   );
