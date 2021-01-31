@@ -50,12 +50,30 @@ function App() {
   useEffect(()=>{
     console.log("getting contract information")
     loadData()
-  }, [])
+  },[])
+
+  const setNameBtn = (input, unique) => {
+    if (!unique){
+      alert("Sorry but this Set Name has already been taken")
+    }
+    else {
+      setLoad(false);
+      collectionContract.methods.CreateCollection(input).send({from: account})
+      .once('receipt', (receipt) => {
+        console.log(receipt)
+        window.location.reload()
+      })
+    }
+  }
+
+  const addTag = () => {
+
+  }
 
   return (
     <div className="App">
       {loaded 
-      ? <MainView collection={collect} collectionsCount={collectionsCount} />
+      ? <MainView tagContract={collectionContract} addTag={addTag} users={users} collection={collect} collectionsCount={collectionsCount} setNameBtn={setNameBtn}/>
       : <div> Loading....</div>}
     </div>
   );
